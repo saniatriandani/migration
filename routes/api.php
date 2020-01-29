@@ -24,3 +24,15 @@ Route::get('/', function(){
 })->middleware('jwt.verify');
 
 Route::get('user', 'petugasController@getAuthenticatedUser')->middleware('jwt.verify');
+
+Route::get('/index', 'bukuController@index')->middleware('jwt.verify');
+Route::post('/simpan', 'bukuController@store')->middleware('jwt.verify');
+Route::put('/ubah/{id}', 'bukuController@update')->middleware('jwt.verify');
+Route::delete('/hapus/{id}', 'bukuController@destroy')->middleware('jwt.verify');
+Route::get('/tampil', 'bukuController@tampil')->middleware('jwt.verify');
+
+Route::get('/index_anggota', 'anggotaController@index')->middleware('jwt.verify');
+Route::post('/simpan_anggota', 'anggotaController@store')->middleware('jwt.verify');
+Route::put('/ubah_anggota/{id}', 'anggotaController@update')->middleware('jwt.verify');
+Route::delete('/hapus_anggota/{id}', 'anggotaController@destroy')->middleware('jwt.verify');
+Route::get('/tampil_anggota', 'anggotaController@tampil')->middleware('jwt.verify');
